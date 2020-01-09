@@ -1,0 +1,20 @@
+﻿<Properties StartupConfiguration="{87473FD1-F904-4010-80BB-A22ED96A3D44}|Default">
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="FM_DETHI" expanded="True" selected="True">
+            <Node name="FM_DETHI" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.FM__DETHI FirstBuild="True" PreferredExecutionTarget="/Applications/Opera.app" />
+</Properties>
