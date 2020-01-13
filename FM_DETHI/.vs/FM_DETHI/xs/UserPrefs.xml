@@ -1,10 +1,25 @@
 ﻿<Properties StartupConfiguration="{87473FD1-F904-4010-80BB-A22ED96A3D44}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="FM_DETHI/ClientApp/src/app/app.component.ts">
+    <Files>
+      <File FileName="FM_DETHI/ClientApp/src/app/app.component.ts" Line="5" Column="3" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="FM_DETHI" expanded="True" selected="True">
-            <Node name="FM_DETHI" expanded="True" />
+          <Node name="FM_DETHI" expanded="True">
+            <Node name="FM_DETHI" expanded="True">
+              <Node name="ClientApp" expanded="True">
+                <Node name="src" expanded="True">
+                  <Node name="app" expanded="True">
+                    <Node name="app.component.ts" selected="True" />
+                  </Node>
+                </Node>
+              </Node>
+              <Node name="Controllers" expanded="True" />
+              <Node name="Pages" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="wwwroot" expanded="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
@@ -16,5 +31,5 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.FM__DETHI FirstBuild="True" PreferredExecutionTarget="/Applications/Opera.app" />
+  <MonoDevelop.Ide.ItemProperties.FM__DETHI PreferredExecutionTarget="/Applications/Safari.app" />
 </Properties>
