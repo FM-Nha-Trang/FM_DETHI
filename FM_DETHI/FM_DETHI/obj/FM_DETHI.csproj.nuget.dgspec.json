@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Applications/MAMP/htdocs/2019/dotnet/FM_DETHI/FM_DETHI/FM_DETHI/FM_DETHI.csproj": {}
+    "/Applications/MAMP/htdocs/2019/dotnet/FM_DETHI_DEV/FM_DETHI/FM_DETHI.csproj": {}
   },
   "projects": {
-    "/Applications/MAMP/htdocs/2019/dotnet/FM_DETHI/FM_DETHI/FM_DETHI/FM_DETHI.csproj": {
+    "/Applications/MAMP/htdocs/2019/dotnet/FM_DETHI_DEV/FM_DETHI/FM_DETHI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Applications/MAMP/htdocs/2019/dotnet/FM_DETHI/FM_DETHI/FM_DETHI/FM_DETHI.csproj",
+        "projectUniqueName": "/Applications/MAMP/htdocs/2019/dotnet/FM_DETHI_DEV/FM_DETHI/FM_DETHI.csproj",
         "projectName": "FM_DETHI",
-        "projectPath": "/Applications/MAMP/htdocs/2019/dotnet/FM_DETHI/FM_DETHI/FM_DETHI/FM_DETHI.csproj",
+        "projectPath": "/Applications/MAMP/htdocs/2019/dotnet/FM_DETHI_DEV/FM_DETHI/FM_DETHI.csproj",
         "packagesPath": "/Users/buibang/.nuget/packages/",
-        "outputPath": "/Applications/MAMP/htdocs/2019/dotnet/FM_DETHI/FM_DETHI/FM_DETHI/obj/",
+        "outputPath": "/Applications/MAMP/htdocs/2019/dotnet/FM_DETHI_DEV/FM_DETHI/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
@@ -39,6 +39,26 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "Microsoft.AspNetCore.Routing": {
+              "target": "Package",
+              "version": "[2.2.2, )"
+            },
+            "Microsoft.AspNetCore.Routing.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.SpaServices": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.AspNetCore.SpaServices.Extensions": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
               "version": "[3.1.0, )"

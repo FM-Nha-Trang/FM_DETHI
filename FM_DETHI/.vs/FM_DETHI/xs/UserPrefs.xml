@@ -1,11 +1,11 @@
 ﻿<Properties StartupConfiguration="{B3C2BA1D-66B4-4244-8945-5181F79AD62F}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="FM_DETHI/appsettings.json">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FM_DETHI/Startup.cs">
     <Files>
       <File FileName="FM_DETHI/Program.cs" Line="1" Column="1" />
-      <File FileName="FM_DETHI/Startup.cs" Line="31" Column="85" />
+      <File FileName="FM_DETHI/Startup.cs" Line="31" Column="17" />
       <File FileName="FM_DETHI/Controllers/UsersController.cs" Line="121" Column="34" />
       <File FileName="FM_DETHI/Models/UserContext.cs" Line="16" Column="48" />
-      <File FileName="FM_DETHI/appsettings.json" Line="10" Column="77" />
+      <File FileName="FM_DETHI/appsettings.json" Line="10" Column="74" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,7 +14,7 @@
             <Node name="FM_DETHI" expanded="True">
               <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
-              <Node name="appsettings.json" selected="True" />
+              <Node name="Startup.cs" selected="True" />
             </Node>
           </Node>
         </State>
