@@ -16,7 +16,7 @@ test_code varchar(15) primary key,
 user_create int ,
 date_create datetime not null ,
 title nvarchar(255) ,
-  CONSTRAINT fk_tests
+  CONSTRAINT fk_tests_user_info
    FOREIGN KEY (id)
    REFERENCES user_infor (id),
 )
@@ -30,6 +30,8 @@ answer_B text not null,
 answer_C text not null,
 answer_D text not null,
 answer_true char(1) not null,
+constraint fk_question_tests    FOREIGN KEY (test_code)
+   REFERENCES [dbo].[tests] (test_code),
 )
 
 create table history_answer
@@ -39,10 +41,11 @@ userid int ,
 test_code varchar(15) ,
 date_answer datetime not null ,
 point int not null ,
-constraint fk_history_answer    FOREIGN KEY (userid)
+constraint fk_history_answer_user_info    FOREIGN KEY (userid)
    REFERENCES user_infor (id),
-constraint fk_history_answer    FOREIGN KEY (test_code)
+constraint fk_history_answer_tests    FOREIGN KEY (test_code)
    REFERENCES [dbo].[tests] (test_code),
 
 )
+
 
