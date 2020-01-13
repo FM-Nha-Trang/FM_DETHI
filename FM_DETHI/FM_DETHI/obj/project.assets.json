@@ -8633,26 +8633,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Phi Hung\\.nuget\\packages\\": {}
+    "/Users/buibang/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Phi Hung\\source\\repos\\FM_DETHI\\FM_DETHI\\FM_DETHI.csproj",
+      "projectUniqueName": "/Applications/MAMP/htdocs/2019/dotnet/FM_DETHI/FM_DETHI/FM_DETHI/FM_DETHI.csproj",
       "projectName": "FM_DETHI",
-      "projectPath": "C:\\Users\\Phi Hung\\source\\repos\\FM_DETHI\\FM_DETHI\\FM_DETHI.csproj",
-      "packagesPath": "C:\\Users\\Phi Hung\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Phi Hung\\source\\repos\\FM_DETHI\\FM_DETHI\\obj\\",
+      "projectPath": "/Applications/MAMP/htdocs/2019/dotnet/FM_DETHI/FM_DETHI/FM_DETHI/FM_DETHI.csproj",
+      "packagesPath": "/Users/buibang/.nuget/packages/",
+      "outputPath": "/Applications/MAMP/htdocs/2019/dotnet/FM_DETHI/FM_DETHI/FM_DETHI/obj/",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Phi Hung\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/buibang/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -8714,7 +8716,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.100/RuntimeIdentifierGraph.json"
       }
     }
   }

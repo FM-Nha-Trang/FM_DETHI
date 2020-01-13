@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DETHI.Models
 {
-    public class User
+    public class Users
     {
         [Key]
         public int Id { get; set; }
@@ -23,7 +23,7 @@ namespace DETHI.Models
                 return true;
             return false;
         } 
-        public int create(User users)
+        public int create(Users users)
         {
 
             return 0;

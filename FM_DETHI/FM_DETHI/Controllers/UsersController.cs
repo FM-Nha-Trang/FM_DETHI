@@ -23,16 +23,16 @@ namespace FM_DETHI.Controllers
         
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUser()
+        public async Task<ActionResult<IEnumerable<Users>>> GetUser()
         {
-            return await _context.User.ToListAsync();
+            return await _context.Users.ToListAsync();
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<Users>> GetUser(int id)
         {
-            var user = await _context.User.FindAsync(id);
+            var user = await _context.Users.FindAsync(id);
 
             if (user == null)
             {
@@ -46,7 +46,7 @@ namespace FM_DETHI.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        public async Task<IActionResult> PutUser(int id, Users user)
         {
             if (id != user.Id)
             {
@@ -78,9 +78,9 @@ namespace FM_DETHI.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<Users>> PostUser(Users user)
         {
-            _context.User.Add(user);
+            _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
@@ -88,15 +88,15 @@ namespace FM_DETHI.Controllers
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<User>> DeleteUser(int id)
+        public async Task<ActionResult<Users>> DeleteUser(int id)
         {
-            var user = await _context.User.FindAsync(id);
+            var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
                 return NotFound();
             }
 
-            _context.User.Remove(user);
+            _context.Users.Remove(user);
             await _context.SaveChangesAsync();
 
             return user;
@@ -106,7 +106,7 @@ namespace FM_DETHI.Controllers
         [Route("api/Login")]
         public string Login(string username)
         {
-            User users = new User();
+            Users users = new Users();
             var user = users.Check_username(username);
 
             if (user == true)
@@ -118,7 +118,7 @@ namespace FM_DETHI.Controllers
 
         private bool UserExists(int id)
         {
-            return _context.User.Any(e => e.Id == id);
+            return _context.Users.Any(e => e.Id == id);
         }
     }
 }

@@ -28,7 +28,7 @@ namespace DETHI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connection = @"Data Source=PhiHung;Initial Catalog=testdsc;Integrated Security=True";
+            var connection = @"Server=localhost,1433; Database=testdsc; User=sa; Password=Docker123;";
             services.AddDbContext<UserContext>(options => options.UseSqlServer(connection));
             //services.AddMvc(option => option.EnableEndpointRouting = false);
             //services.AddMvc();

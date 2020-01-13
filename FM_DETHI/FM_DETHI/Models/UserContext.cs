@@ -13,6 +13,6 @@ namespace DETHI.Models
         {
         }
 
-        public DbSet<User> User { get; set; }
+        public DbSet<Users> Users { get; set; }
     }
 }
