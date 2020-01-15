@@ -1,4 +1,4 @@
-﻿create database testdscuse testdsc;
+﻿create database testdsc
 use testdsc;
 create table users
 (
@@ -48,3 +48,5 @@ create table history_answer
    REFERENCES [dbo].[tests] (test_code),
 
 )
+use testdsc
+ set identity_insert [dbo].[user_infor] on
