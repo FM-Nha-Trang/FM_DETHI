@@ -156,7 +156,7 @@ namespace FM_DETHI.Controllers
                 } else
                 {
                     Response.StatusCode = 500;
-                    return Content("{"StatusCode\":\"500\",\"Message\":\"Mật khẩu không chính xác!\"}");
+                    return Content("{\"StatusCode\":\"500\",\"Message\":\"Mật khẩu không chính xác!\"}");
                 }
                
             }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FM_DETHI.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DETHI.Models
@@ -14,5 +15,7 @@ namespace DETHI.Models
         }
 
         public DbSet<Users> Users { get; set; }
+
+        public DbSet<FM_DETHI.Models.Tests> Tests { get; set; }
     }
 }
