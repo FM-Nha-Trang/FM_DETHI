@@ -1,5 +1,5 @@
 ﻿create database testdsc
-use testdsc;
+use testdsc
 create table users
 (
    id int identity(1,1) primary key ,
@@ -18,7 +18,7 @@ create table tests
    date_create datetime not null ,
    title nvarchar(255) ,
    CONSTRAINT fk_tests_user_info
-   FOREIGN KEY (id)
+   FOREIGN KEY (user_create)
    REFERENCES users (id),
 )
 create table questions
@@ -49,4 +49,4 @@ create table history_answer
 
 )
 use testdsc
- set identity_insert [dbo].[user_infor] on
+ set identity_insert [dbo].[users] on
