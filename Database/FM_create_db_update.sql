@@ -1,11 +1,11 @@
-create database testdscuse testdsc;
+﻿create database testdscuse testdsc;
 use testdsc;
 create table users
 (
    id int identity(1,1) primary key ,
    username varchar(15) not null,
-   first_name varchar(20) not null ,
-   last_name varchar(15) not null ,
+   first_name nvarchar(20) not null ,
+   last_name nvarchar(15) not null ,
    age smallint ,
    gender varchar(5) check( gender = N'Nam' or gender = N'Nữ'),
    pass varchar(255)
