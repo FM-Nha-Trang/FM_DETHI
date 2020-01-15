@@ -7,7 +7,7 @@ create table users
    first_name nvarchar(20) not null ,
    last_name nvarchar(15) not null ,
    age smallint ,
-   gender varchar(5) check( gender = N'Nam' or gender = N'Nữ'),
+   gender nvarchar(5) check( gender = N'Nam' or gender = N'Nữ'),
    pass varchar(255)
 )
 create table tests
