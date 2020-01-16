@@ -26,14 +26,16 @@ namespace FM_DETHI.Controllers
             _context = context;
         }
         
-        // GET: api/Users
+        // GET: api/Users/List
+        [Route("List")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Users>>> GetUser()
         {
             return await _context.Users.ToListAsync();
         }
 
-        // GET: api/Users/5
+        // GET: api/Users/Get/5
+        [Route("Get/{id}")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Users>> GetUser(int id)
         {
@@ -47,9 +49,10 @@ namespace FM_DETHI.Controllers
             return user;
         }
 
-        // PUT: api/Users/5
+        // PUT: api/Users/Update/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
+        [Route("Update/{id}")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, Users user)
         {
@@ -76,12 +79,13 @@ namespace FM_DETHI.Controllers
                 }
             }
 
-            return NoContent();
+            return Content("{\"StatusCode\":200,\"Message\":\"Cập nhập thành công!\"}");
         }
 
-        // POST: api/Users
+        // POST: api/Users/Register
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
+        [Route("Register")]
         [HttpPost]
         public async Task<ActionResult<Users>> PostUser(Users user)
         {
@@ -105,11 +109,12 @@ namespace FM_DETHI.Controllers
                 return Content("{\"Status\":\"201\",\"Message\":\"Tạo tài khoản thành công\", \"ID\" : \"" + user_new.Id+"\"}");
             }
             Response.StatusCode = 500;
-            return Content("{\"Status\":\"500\",\"Message\":\"Tên đăng nhập đã tồn tại!\"}");
+            return Content("{\"Status\":\"500\",\"Message\":\"Tên đăng nhập đã tồn tại!\",\"errorField\":\"username\"}");
         }
 
 
-        // DELETE: api/Users/5
+        // DELETE: api/Users/Delete/5
+        [Route("Delete/{id}")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Users>> DeleteUser(int id)
         {
@@ -126,7 +131,7 @@ namespace FM_DETHI.Controllers
         }
         // GET: api/Users/Login
         [Route("Login")]
-        [HttpGet]
+        [HttpPost]
         public ActionResult<Users> Login(Users user)
         {
             //Check null
@@ -161,7 +166,7 @@ namespace FM_DETHI.Controllers
                
             }
             Response.StatusCode = 200;
-            return Content("{\"Status\":\"500\",\"Message\":\"Tên đăng nhập đã tồn tại!\",\"errorField\":\"username\"}");
+            return Content("{\"StatusCode\":\"500\",\"Message\":\"Tên tài khoản không chính xác!\"}");
 
         }
 
