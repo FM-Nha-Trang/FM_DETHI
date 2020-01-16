@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DETHI.Models;
 using FM_DETHI.Models;
+using System.Globalization;
 
 namespace FM_DETHI.Controllers
 {
     [Route("api/[controller]")]
+    [Produces("application/json")]
     [ApiController]
     public class TestsController : ControllerBase
     {
@@ -21,14 +23,91 @@ namespace FM_DETHI.Controllers
             _context = context;
         }
 
-        // GET: api/Tests
+        // GET: api/Tests/List
+        [Route("List")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Tests>>> GetTests()
         {
-            return await _context.Tests.ToListAsync();
+            List<Tests> list =  await _context.Tests.ToListAsync();
+
+            return list;
         }
 
-        // GET: api/Tests/5
+        // GET: api/Tests/List
+        [Route("List/{id}")]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Tests>>> GetTestList(int id)
+        {
+            var list = await _context.Tests.ToListAsync();
+            var h_list =  _context.History_Answer
+                                            .Where(s => s.userid == id)
+                                            .ToArray();
+            var result = new List<ResultTest>();
+
+            if (h_list.Count() == 0)
+            {
+                foreach (var lst in list)
+                {
+                    ResultTest content_add = new ResultTest(
+                        lst.test_code,
+                        lst.user_create,
+                        lst.date_create.ToString(),
+                        lst.title,
+                        false,
+                        null
+                    );
+                    result.Add(content_add);
+                    content_add = null;
+                }
+                
+            } else
+            {
+                foreach (var lst in list)
+                {
+                    History_Answer dataAnswer = new History_Answer();
+                    ResultTest content_add;
+                    bool check = false;
+                    foreach (var h_lst in h_list)
+                    {
+                        if (h_lst.test_code == lst.test_code)
+                        {
+                            check = true;
+                            dataAnswer = h_lst;
+                            break;
+                        }
+                    }
+                    if(check)
+                    {
+                        content_add = new ResultTest(
+                                lst.test_code,
+                                lst.user_create,
+                                lst.date_create.ToString(),
+                                lst.title,
+                                true,
+                                dataAnswer
+                            );
+                        result.Add(content_add);
+                        content_add = null;
+                    } else
+                    {
+                        content_add = new ResultTest(
+                                lst.test_code,
+                                lst.user_create,
+                                lst.date_create.ToString(),
+                                lst.title,
+                                false,
+                                null
+                            );
+                        result.Add(content_add);
+                        content_add = null;
+                    }    
+                }
+            }            
+            return Ok(result);
+        }
+
+        // GET: api/Tests/get/5
+        [Route("Get/{id}")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Tests>> GetTests(string id)
         {
@@ -42,9 +121,10 @@ namespace FM_DETHI.Controllers
             return tests;
         }
 
-        // PUT: api/Tests/5
+        // PUT: api/Tests/update/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
+        [Route("Update/{id}")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTests(string id, Tests tests)
         {
@@ -74,9 +154,10 @@ namespace FM_DETHI.Controllers
             return NoContent();
         }
 
-        // POST: api/Tests
+        // POST: api/Tests/add
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
+        [Route("Add")]
         [HttpPost]
         public async Task<ActionResult<Tests>> PostTests(Tests tests)
         {
@@ -100,7 +181,8 @@ namespace FM_DETHI.Controllers
             return CreatedAtAction("GetTests", new { id = tests.test_code }, tests);
         }
 
-        // DELETE: api/Tests/5
+        // DELETE: api/Tests/delete/5
+        [Route("Delete/{id}")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<Tests>> DeleteTests(string id)
         {
@@ -116,7 +198,22 @@ namespace FM_DETHI.Controllers
             return tests;
         }
 
-        private bool TestsExists(string id)
+        // DELETE: api/Tests/delete/5
+        [Route("Check/{id}")]
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Tests>> CheckTestCode(string id)
+        {
+            var tests = await _context.Tests.FindAsync(id);
+            if (tests == null)
+            {
+                return Ok("{\"Result\": \"False\"}");
+            }
+
+            return Ok("{\"Result\" : \"True\"}");
+        }
+
+
+        public bool TestsExists(string id)
         {
             return _context.Tests.Any(e => e.test_code == id);
         }

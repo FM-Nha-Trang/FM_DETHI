@@ -16,6 +16,10 @@ namespace DETHI.Models
 
         public DbSet<Users> Users { get; set; }
 
-        public DbSet<FM_DETHI.Models.Tests> Tests { get; set; }
+        public DbSet<Tests> Tests { get; set; }
+
+        public DbSet<History_Answer> History_Answer { get; set; }
+
+        public DbSet<Questions> Questions { get; set; }
     }
 }
