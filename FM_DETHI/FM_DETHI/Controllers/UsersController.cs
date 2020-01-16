@@ -161,7 +161,7 @@ namespace FM_DETHI.Controllers
                
             }
             Response.StatusCode = 200;
-            return Content("{\"StatusCode\":\"500\",\"Message\":\"Tên tài khoản không chính xác!\"}");
+            return Content("{\"Status\":\"500\",\"Message\":\"Tên đăng nhập đã tồn tại!\",\"errorField\":\"username\"}");
 
         }
 
