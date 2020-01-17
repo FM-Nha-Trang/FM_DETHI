@@ -37,6 +37,12 @@ export class TestService {
   			   .delete<any>(this.base_url + `api/Tests/Add/${testCode}`);
   }
 
+  //GET Check exist test code 
+  checkTestCode(code: string){
+  	return this.http
+  			   .get<any>(this.base_url + 'api/Tests/Check/'+code);
+  }
+
   //GET list of question method
   getQuestionsList(testCode: string) {
   	let params = new HttpParams();

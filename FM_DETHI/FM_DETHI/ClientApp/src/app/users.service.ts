@@ -33,7 +33,7 @@ export class UsersService {
   //POST user auth
   authUser(login: Login){
   	return this.http
-			   .post<any>(this.base_url + "api/Users/Login",login);
+			   .post<any>(this.base_url + "Users/Login",login);
   }
 
   //Error handler while using method

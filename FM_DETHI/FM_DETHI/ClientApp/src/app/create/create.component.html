@@ -19,7 +19,7 @@
 						  	<div class="form-group row">
 						  		<label for="title" class="col-2 col-form-label"><h4>Tiêu đề:</h4></label>
 						  		<div class="col-10">
-						    		<input type="text" class="form-control" id="title" placeholder="Nhập tiêu đề của bài kiểm tra" value="" name="title" ngModel required>
+						    		<input type="text" class="form-control" id="title" placeholder="Nhập tiêu đề của bài kiểm tra" value="" name="title" [(ngModel)] = "test.title" required>
 						  		</div>
 						  	</div>
 							<!-- Question -->
@@ -172,7 +172,7 @@
 					</div>
 					<div class="col-3 align-self-center">
 						<button title="Huỷ" (click)="cancelForm()" class="btn btn-danger button-fixed"><i class="fas fa-times icon"></i></button>
-						<button title="Lưu" [disabled] = "questionForm.form.invalid" type="submit" class="btn btn-info button-fixed"><i class="fas fa-save icon"></i></button>
+						<button title="Lưu" (click)="onSubmit()" class="btn btn-info button-fixed"><i class="fas fa-save icon"></i></button>
 					</div>
 				</div>
 			</div>

@@ -18,7 +18,7 @@
 					</div>
 					<div class="col-6 align-self-center">
 						<h4 class="user_info">THÔNG TIN NGƯỜI DÙNG</h4>
-						<h5 class="user_info">Tên: {{this.thisUser.Last_name + this.thisUser.First_name}}</h5>
+						<h5 class="user_info">Tên: {{this.thisUser.Last_name + ' ' + this.thisUser.First_name}}</h5>
 						<h5 class="user_info">Giới tính: {{this.thisUser.Gender}}</h5>
 						<h5 class="user_info">Tuổi: {{this.thisUser.Age}}</h5>
 					</div>
@@ -69,7 +69,7 @@
 								<b>{{ test.title }}</b>
 							</td>
 							<td class="align-self-center">
-								<b>{{ test.date_create }}</b>
+								<b>{{ (test.date_create == null)? 'Chưa tham gia' : test.date_create }}</b>
 							</td>
 							<td class="align-self-center">
 								<b>{{ (test.dataAnswer == null )? 'Chưa tham gia' : test.dataAnswer }}</b>

@@ -16,16 +16,15 @@ export class CreateComponent implements OnInit {
    private htmlString : string;
    private curentDate: Date = new Date();
    private currentDay: string;
-   private datesendDB: string = (this.curentDate.getFullYear() + (this.curentDate.getMonth() + 1) + this.curentDate.getDate() + 'T0' + this.curentDate.getHours() + ":" + this.curentDate.getMinutes() + ":" + this.curentDate.getSeconds()).toString();
-   private testCode: string = 'TU'+JSON.parse(sessionStorage.getItem("user")).Id+ this.curentDate.toJSON().slice(0,10).replace(/-/g,'');
-   //test_code, user_id, date_create, title 
-   public test = new Test(this.testCode,0,'','');
+   private datesendDB: string = (this.curentDate.getFullYear() + '-0' + (this.curentDate.getMonth() + 1) + '-' + this.curentDate.getDate() + 'T' + this.curentDate.getHours() + ":" + this.curentDate.getMinutes() + ":" + this.curentDate.getSeconds()).toString();
+   //user_id, date_create, title 
+   public test = new Test(JSON.parse(sessionStorage.getItem("user")).Id,this.datesendDB,'');
    //test_code, title, answer_a, answer_b, answer_c, answer_d, answer_true
-   public question_1 = new Question(this.testCode,'','','','','','');
-   public question_2 = new Question(this.testCode,'','','','','','');
-   public question_3 = new Question(this.testCode,'','','','','','');
-   public question_4 = new Question(this.testCode,'','','','','','');
-   public question_5 = new Question(this.testCode,'','','','','','');
+   public question_1 = new Question('','','','','','','');
+   public question_2 = new Question('','','','','','','');
+   public question_3 = new Question('','','','','','','');
+   public question_4 = new Question('','','','','','','');
+   public question_5 = new Question('','','','','','','');
 
   constructor(private router: Router, private _testService: TestService) { }
 
@@ -43,17 +42,24 @@ export class CreateComponent implements OnInit {
   	if(accept){
   		this.router.navigate(['/dashboard']);
   	}
+    this.thisUser = JSON.parse(sessionStorage.getItem("user"));
   }
 
   onSubmit() {
     this._testService.postTest(this.test).subscribe(
-                                                    data => console.log("test success"),
+                                                    data => {
+                                                      this.question_1.test_code = data.test_code;
+                                                      this._testService.postQuestion(this.question_1).subscribe(
+                                                                                                      data => console.log("ans success"),
+                                                                                                      error => console.log(JSON.stringify(error))
+                                                                                                     );
+                                                    },
                                                     error => console.log(JSON.stringify(error))
                                                    );
-    this._testService.postQuestion(this.question_1).subscribe(
-                                                    data => console.log("test success"),
-                                                    error => console.log(JSON.stringify(error))
-                                                   );
+    // this._testService.postQuestion(this.question_1).subscribe(
+    //                                                 data => console.log("ans success"),
+    //                                                 error => console.log(JSON.stringify(error))
+    //                                                );
   }
 
   addMoreQuestion(){
