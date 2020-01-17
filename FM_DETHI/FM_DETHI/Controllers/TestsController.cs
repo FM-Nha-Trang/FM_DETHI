@@ -161,6 +161,11 @@ namespace FM_DETHI.Controllers
         [HttpPost]
         public async Task<ActionResult<Tests>> PostTests(Tests tests)
         {
+            do
+            {
+                tests.test_code = this.CreateTestCode((int)tests.user_create);
+            } while (TestsExists(tests.test_code));            
+
             _context.Tests.Add(tests);
             try
             {
@@ -216,6 +221,12 @@ namespace FM_DETHI.Controllers
         public bool TestsExists(string id)
         {
             return _context.Tests.Any(e => e.test_code == id);
+        }
+
+        public string CreateTestCode(int id)
+        {
+            Random rand = new Random();
+            return "TU" + id + "" + rand.Next(999999);
         }
     }
 }

@@ -48,7 +48,7 @@ namespace FM_DETHI.Controllers
             var list = _context.History_Answer
                                 .Where(s => s.test_code == id)
                                 .ToList();
-            return Ok("{\"StatusCode\" : \"200\", \"Message\" : \"Thành công!\", \"Result\" : " + list + "}");
+            return Ok("{\"StatusCode\" : \"200\", \"Message\" : \"Thành công!\", \"Result\" : " + JsonConvert.SerializeObject(list) + "}");
         }
 
         // GET: api/History_Answer
@@ -63,7 +63,7 @@ namespace FM_DETHI.Controllers
             var list = _context.History_Answer
                                 .Where(s => s.userid == id)
                                 .ToList();
-            return Ok("{\"StatusCode\" : \"200\", \"Message\" : \"Thành công!\", \"Result\" : " + list + "}");
+            return Ok("{\"StatusCode\" : \"200\", \"Message\" : \"Thành công!\", \"Result\" : " + JsonConvert.SerializeObject(list) + "}");
         }
 
         // GET: api/History_Answer/5
