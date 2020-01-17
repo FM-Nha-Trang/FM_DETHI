@@ -58,24 +58,24 @@
 					</thead>
 					<tbody>
 						<!-- TEST DATA -->
-						<tr *ngFor="let test of testList | keyvalue">
+						<tr *ngFor="let test of testList">
 							<td class="align-self-center">
 								<img src="assets/image/image_asset/user.png" alt="">
 							</td>
 							<td class="align-self-center text-left">
 								<b>{{ test.test_code }}</b>
 							</td>
-							<td class="align-self-center">
-								<b>{{"DE KIEM TRA TOAN TUY..."}}</b>
+							<td class="title align-self-center">
+								<b>{{ test.title }}</b>
 							</td>
 							<td class="align-self-center">
-								<b>20/01/2020</b>
+								<b>{{ test.date_create }}</b>
 							</td>
 							<td class="align-self-center">
-								<b>86</b>
+								<b>{{ (test.dataAnswer == null )? 'Chưa tham gia' : test.dataAnswer }}</b>
 							</td>
 							<td class="align-self-center text-left">
-								<input  data-toggle="modal" data-target="#answer-page" type="button" class="btn btn-danger" value="Làm lại">
+								<input  data-toggle="modal" data-target="#answer-page" type="button" class="btn {{ (test.isAnswer)? 'btn-info' : 'btn-danger' }}" value="{{ (test.isAnswer)? 'Làm lại' : 'Làm bài' }}">
 							</td>
 						</tr>
 						<tr class="line-height"></tr>

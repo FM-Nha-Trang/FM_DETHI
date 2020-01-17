@@ -12,24 +12,20 @@ import { TestService } from '../test.service';
 export class DashboardComponent implements OnInit {
 
   private thisUser: object;
-  private testList: any;
-  public arrayTest;
+  public testList: any[];
 
   constructor(private router: Router, private _testService: TestService) { }
 
   ngOnInit() {
-    let arrayTest = [];
   	let loggin = sessionStorage.getItem("loggin");
   	if(!loggin){
   		this.router.navigate(['/login']);
   		sessionStorage.clear();
   	}
     this.thisUser = JSON.parse(sessionStorage.getItem("user"));
-    this.testList = this._testService.getTestList()
-                                     .subscribe((data:any) => {arrayTest = data;}, error => console.log("failed"));
-     console.log(arrayTest);
+    this._testService.getTestList(this.thisUser.Id)
+                     .subscribe((data:any[]) => this.testList = data, error => console.log("failed"));
   }
-
 
 
 }

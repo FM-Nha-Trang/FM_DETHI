@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
   		.createUsers(this.usersModel)
   		.subscribe(
   			data => {this.errorSubmit = false; this.successSubmit = true;}, 
-  			error => {this.errorSubmit = true; this.successSubmit = false; this.errorMessage = error.error.Message; } 
+  			error => {this.errorSubmit = true; this.successSubmit = false; console.log(JSON.stringify(error)); this.errorMessage = error.error.Message; } 
   		);
   }
 

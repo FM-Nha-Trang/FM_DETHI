@@ -46,6 +46,9 @@
     tbody{
       tr {
         background: #ffffff;
+        .title {
+          width: 28%;
+        }
         td {
           padding: 1em;
 

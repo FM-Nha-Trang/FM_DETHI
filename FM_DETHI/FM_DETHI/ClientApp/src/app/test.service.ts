@@ -14,25 +14,27 @@ import 'rxjs/add/observable/throw';
 })
 export class TestService {
 
+
+  base_url: string = "https://localhost:5001/";
+
   constructor(private http: HttpClient) { }
 
   //GET list of test method
-  getTestList(): Observable<ITest[]> {
+  getTestList(id: number): Observable<ITest[]> {
   	return this.http
-  			   .get<ITest[]>("https://localhost:5001/api/Tests/List")
-  			   .catch(this.errorHandler);
+  			   .get<ITest[]>(this.base_url + "api/Tests/List/" + id);
   }
 
   //POST test method
   postTest(test: Test){
   	return this.http
-			   .post<any>("https://localhost:5001/api/Tests/Add",test);
+			   .post<any>(this.base_url + "api/Tests/Add",test);
   }
 
   //DELETE test method
   deleteTest(testCode: string){
   	return this.http
-  			   .delete<any>(`https://localhost:5001/api/Tests/Add/${testCode}`);
+  			   .delete<any>(this.base_url + `api/Tests/Add/${testCode}`);
   }
 
   //GET list of question method
@@ -40,14 +42,14 @@ export class TestService {
   	let params = new HttpParams();
 	params = params.append('test_code', testCode);
   	return this.http
-  			   .get<any>("https://localhost:5001/api/Questions/List", {params: params})
+  			   .get<any>(this.base_url + "api/Questions/List", {params: params})
   			   .catch(this.errorHandler);
   }
 
   //POST question method
   postQuestion(question: Question){
   	return this.http
-			   .post<any>("https://localhost:5001/api/Tests/Add",question);
+			   .post<any>(this.base_url + "api/Tests/Add",question);
   }
 
   //Error handler while using method

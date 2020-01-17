@@ -13,25 +13,27 @@ import 'rxjs/add/observable/throw';
 })
 export class UsersService {
 
+  base_url: string = "https://localhost:5001/api/";
+
   constructor(private http: HttpClient) { }
 
   //GET users method
   getUsers(): Observable<IUsers[]> {
   	return this.http
-  			   .get<IUsers[]>("https://localhost:5001/api/Users")
-  			   .catch(this.errorHandler);
+  			   .get<IUsers[]>(this.base_url + "Users/List");
   }
+
 
   //POST user method, use to create a user
   createUsers(users: Users){
 	return this.http
-			   .post<any>( "https://localhost:5001/api/Users", users );
+			   .post<any>( this.base_url + "Users/Register", users );
   }
 
   //POST user auth
   authUser(login: Login){
   	return this.http
-			   .post<any>("https://localhost:5001/api/Users/Login",login);
+			   .post<any>(this.base_url + "api/Users/Login",login);
   }
 
   //Error handler while using method

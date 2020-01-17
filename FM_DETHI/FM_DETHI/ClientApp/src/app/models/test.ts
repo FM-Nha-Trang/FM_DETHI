@@ -3,6 +3,8 @@ export class Test {
 		public test_code: string,
 		public user_create: number,
 		public date_create: string,
-		public title: string
+		public title: string,
+		public isAnswer: boolean,
+		public dataAnswer: any
 	){}
 }
