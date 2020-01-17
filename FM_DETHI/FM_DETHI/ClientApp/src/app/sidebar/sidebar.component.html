@@ -1,0 +1,30 @@
+<div id="sidebar">
+  <div class="toggle-btn" (click)="toggleSidebar()">
+	  <a>
+		   <span></span>
+		   <span></span>
+		   <span></span>
+	  </a>
+  </div>
+  <div class="row align-self-center user-ava">
+  	<img src="assets/image/image_asset/user.png" alt="">
+  </div>
+  <div class="row justify-content-center align-self-center">
+  	<span class="user-name">{{thisUser.Last_name + thisUser.First_name}}</span>
+  </div>
+  <div>
+	  <ul>
+		   <a routerLink='/dashboard'><li [class.active]="this.router.url === '/dashboard'">
+		   		<b>Trang chủ</b> <i class="fas fa-home float-right icon-bar"></i>
+		   </li></a>
+		   <a routerLink='/create'><li [class.active]="this.router.url === '/create'">
+		   		<b>Tạo đề thi</b> <i style="margin-right: 0.15em" class="fas fa-file-medical float-right icon-bar"></i></li></a>
+		   <a routerLink='/history'><li [class.active]="this.router.url === '/history'">
+		   		<b>Lịch sử</b> <i class="fas fa-history float-right icon-bar"></i>
+		   </li></a>
+		   <a><li (click)="userLogout()">
+		   		<b>Đăng xuất</b> <i class="fas fa-sign-out-alt float-right icon-bar"></i>
+		   </li></a>
+	  </ul>
+  </div>
+</div>

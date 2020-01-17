@@ -1,0 +1,181 @@
+<app-sidebar></app-sidebar>
+<div class="container-fluid content-page">
+	<div class="row">
+		<div class="col-6 align-self-center">
+			<span class="title-page">TẠO ĐỀ KIỂM TRA</span>
+			{{this.datesendDB}}
+		</div>
+		<div class="col-6 align-self-center">
+			 <h5 class="float-right"><a routerLink='/dashboard'>Trang chủ</a> > <a routerLink='/create'>Tạo đề kiểm tra</a></h5>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="page-info">
+				<div class="row h-100">
+					<div class="col-9" id="question-form">
+						<form class="question-container" #questionForm="ngForm" (ngSubmit) = "onSubmit()" novalidate>
+							<!-- Title -->
+						  	<div class="form-group row">
+						  		<label for="title" class="col-2 col-form-label"><h4>Tiêu đề:</h4></label>
+						  		<div class="col-10">
+						    		<input type="text" class="form-control" id="title" placeholder="Nhập tiêu đề của bài kiểm tra" value="" name="title" ngModel required>
+						  		</div>
+						  	</div>
+							<!-- Question -->
+							<div class="form-group question">
+								<table class="question-answer">
+									<thead>
+										<tr>
+											<th><b>Câu 1:</b></th>
+											<th class="type_question"><input type="text" placeholder="Nhập câu hỏi..." class="form-control" #question_title_1 = "ngModel" name="question_title_1" ngModel [(ngModel)]="question_1.title" required></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="text-center"><input type="radio" name="question_1" [(ngModel)]="question_1.answer_true" value="A"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_a_1 = "ngModel" name="question_a_1" ngModel [(ngModel)]="question_1.answer_A" required></td>
+										</tr>
+										<tr>
+											<td class="text-center"><input type="radio"  name="question_1" [(ngModel)]="question_1.answer_true" value="B"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_b_1 = "ngModel" name="question_b_1" ngModel [(ngModel)]="question_1.answer_B" required></td>
+										</tr>
+										<tr>
+											<td class="text-center"><input type="radio"  name="question_1" [(ngModel)]="question_1.answer_true" value="C"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_c_1 = "ngModel" name="question_c_1" ngModel [(ngModel)]="question_1.answer_C" required></td>
+										</tr>
+										<tr>
+											<td class="justify-content-right"><input type="radio"  name="question_1" [(ngModel)]="question_1.answer_true" value="D"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_d_1 = "ngModel" name="question_d_1" ngModel [(ngModel)]="question_1.answer_D" required></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- Question -->
+							<div class="form-group question">
+								<table class="question-answer">
+									<thead>
+										<tr>
+											<th><b>Câu 2:</b></th>
+											<th class="type_question"><input type="text" placeholder="Nhập câu hỏi..." class="form-control" #question_title_2 = "ngModel" name="question_title_2" ngModel [(ngModel)]="question_2.title" required></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="text-center"><input type="radio" name="question_2" [(ngModel)]="question_2.answer_true" value="A"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_a_2 = "ngModel" name="question_a_2" ngModel [(ngModel)]="question_2.answer_A" required></td>
+										</tr>
+										<tr>
+											<td class="text-center"><input type="radio" name="question_2" [(ngModel)]="question_2.answer_true" value="B"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_b_2 = "ngModel" name="question_b_2" ngModel [(ngModel)]="question_2.answer_B" required></td>
+										</tr>
+										<tr>
+											<td class="text-center"><input type="radio" name="question_2" [(ngModel)]="question_2.answer_true" value="C"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_c_2 = "ngModel" name="question_c_2" ngModel [(ngModel)]="question_2.answer_C" required></td>
+										</tr>
+										<tr>
+											<td class="justify-content-right"><input type="radio" name="question_2" [(ngModel)]="question_2.answer_true" value="D"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_d_2 = "ngModel" name="question_d_2" ngModel [(ngModel)]="question_2.answer_D" required></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- Question -->
+							<div class="form-group question">
+								<table class="question-answer">
+									<thead>
+										<tr>
+											<th><b>Câu 3:</b></th>
+											<th class="type_question"><input type="text" placeholder="Nhập câu hỏi..." class="form-control" #question_title_3 = "ngModel" name="question_title_3" ngModel [(ngModel)]="question_3.title" required></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="text-center"><input type="radio" name="question_3" [(ngModel)]="question_3.answer_true" value="A"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_a_3 = "ngModel" name="question_a_3" ngModel [(ngModel)]="question_3.answer_A" required></td>
+										</tr>
+										<tr>
+											<td class="text-center"><input type="radio" name="question_3" [(ngModel)]="question_3.answer_true" value="B"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_b_3 = "ngModel" name="question_b_3" ngModel [(ngModel)]="question_3.answer_B" required></td>
+										</tr>
+										<tr>
+											<td class="text-center"><input type="radio" name="question_3" [(ngModel)]="question_3.answer_true" value="C"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_c_3 = "ngModel" name="question_c_3" ngModel [(ngModel)]="question_3.answer_C" required></td>
+										</tr>
+										<tr>
+											<td class="justify-content-right"><input type="radio" name="question_3" [(ngModel)]="question_3.answer_true" value="D"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_d_3 = "ngModel" name="question_d_3" ngModel [(ngModel)]="question_3.answer_D" required></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- Question -->
+							<div class="form-group question">
+								<table class="question-answer">
+									<thead>
+										<tr>
+											<th><b>Câu 4:</b></th>
+											<th class="type_question"><input type="text" placeholder="Nhập câu hỏi..." class="form-control" #question_title_4 = "ngModel" name="question_title_4" ngModel [(ngModel)]="question_4.title" required></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="text-center"><input type="radio" name="question_4" [(ngModel)]="question_4.answer_true" value="A"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_a_4 = "ngModel" name="question_a_4" ngModel [(ngModel)]="question_4.answer_A" required></td>
+										</tr>
+										<tr>
+											<td class="text-center"><input type="radio"  name="question_4" [(ngModel)]="question_4.answer_true" value="B"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_b_4 = "ngModel" name="question_b_4" ngModel [(ngModel)]="question_4.answer_B" required></td>
+										</tr>
+										<tr>
+											<td class="text-center"><input type="radio"  name="question_4" [(ngModel)]="question_4.answer_true" value="C"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_c_4 = "ngModel" name="question_c_4" ngModel [(ngModel)]="question_4.answer_C" required></td>
+										</tr>
+										<tr>
+											<td class="justify-content-right"><input type="radio"  name="question_4" [(ngModel)]="question_4.answer_true" value="D"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_d_4 = "ngModel" name="question_d_4" ngModel [(ngModel)]="question_4.answer_D" required></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- Question -->
+							<div class="form-group question">
+								<table class="question-answer">
+									<thead>
+										<tr>
+											<th><b>Câu 5:</b></th>
+											<th class="type_question"><input type="text" placeholder="Nhập câu hỏi..." class="form-control" #question_title_5 = "ngModel" name="question_title_5" ngModel [(ngModel)]="question_5.title" required></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="text-center"><input type="radio"  name="question_5" [(ngModel)]="question_5.answer_true" value="A"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_a_5 = "ngModel" name="question_a_5" ngModel [(ngModel)]="question_5.answer_A" required></td>
+										</tr>
+										<tr>
+											<td class="text-center"><input type="radio" name="question_5" [(ngModel)]="question_5.answer_true" value="B"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_b_5 = "ngModel" name="question_b_5" ngModel [(ngModel)]="question_5.answer_B" required></td>
+										</tr>
+										<tr>
+											<td class="text-center"><input type="radio" name="question_5" [(ngModel)]="question_5.answer_true" value="C"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_c_5 = "ngModel" name="question_c_5" ngModel [(ngModel)]="question_5.answer_C" required></td>
+										</tr>
+										<tr>
+											<td class="justify-content-right"><input type="radio" name="question_5" [(ngModel)]="question_5.answer_true" value="D"></td>
+											<td class="type_question"><input type="text" placeholder="Nhập câu trả lời..." class="form-control"  #question_d_5 = "ngModel" name="question_d_5" ngModel [(ngModel)]="question_5.answer_D" required></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<!-- <button id="add-question" (click)="addMoreQuestion()" title="Thêm câu hỏi mới" class="btn btn-primary btn-block"><i class="fas fa-plus"></i></button> -->
+						</form>
+					</div>
+					<div class="col-3 align-self-center">
+						<button title="Huỷ" (click)="cancelForm()" class="btn btn-danger button-fixed"><i class="fas fa-times icon"></i></button>
+						<button title="Lưu" [disabled] = "questionForm.form.invalid" type="submit" class="btn btn-info button-fixed"><i class="fas fa-save icon"></i></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

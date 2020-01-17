@@ -1,0 +1,136 @@
+<section class="container-fluid box">
+	<section class="row justify-content-center">
+		<section class="col-12 col-sm-6 col-md-4">
+			<form class="register-container" #registerForm="ngForm" (ngSubmit) = "onSubmit()" novalidate>
+			  <div class="text-center"><img src="assets/image/logo/logo.png"></div>
+			  <div class="form-group frm-input">
+			    <input type="text" onfocus="this.placeholder='Nhập tên đăng nhập'" onblur="this.placeholder = ''" class="form-control" #userName = "ngModel" [class.is-invalid] = "userName.invalid && userName.touched" id="username" value="" required [(ngModel)]="usersModel.username" name="userName" minlength="5" [class.hide-invalid-text] = "userName.invalid">
+			    <label>Tên đăng nhập</label>
+			  </div>
+			  <div class="form-group frm-input">
+			    <input type="text" onfocus="this.placeholder='Nhập họ của bạn'" onblur="this.placeholder = ''" class="form-control"  #lastName = "ngModel" [class.is-invalid] = "lastName.invalid && lastName.touched" id="last_name" minlength="2" [class.hide-invalid-text] = "lastName.invalid" value="" required [(ngModel)]="usersModel.last_name" name="lastName">
+			    <label>Nhập họ</label>
+			  </div>
+			  <div class="form-group frm-input">
+			    <input type="text" onfocus="this.placeholder='Nhập tên của bạn'" onblur="this.placeholder = ''" class="form-control" #firstName = "ngModel" [class.is-invalid] = "firstName.invalid && firstName.touched" minlength="2" [class.hide-invalid-text] = "firstName.invalid" id="first_name" value="" required [(ngModel)] = "usersModel.first_name" name="firstName">
+			    <label>Nhập tên</label>
+			  </div>
+			  <div class="form-group text-center">
+				  <span><b>Giới tính</b>: &nbsp;</span>
+				  <div class="form-check-inline">
+					<label class="form-check-label">
+					  <input type="radio" [(ngModel)]="usersModel.gender" class="form-check-input" name="gender" value="Nam">Nam 
+					</label>
+				  </div>
+					<div class="form-check-inline">
+					  <label class="form-check-label">
+					    <input type="radio" [(ngModel)]="usersModel.gender" class="form-check-input" name="gender" value="Nữ">Nữ
+					  </label>
+					</div>
+			  </div>
+			  <div class="form-group frm-input">
+			    <input type="password" onfocus="this.placeholder='Nhập mật khẩu'" onblur="this.placeholder = ''" class="form-control" #password = "ngModel" [pattern]="passwordRegex" [class.hide-invalid-text] = "password.invalid" [class.is-invalid] = "password.invalid && password.touched" id="password" required [(ngModel)]="usersModel.pass" name="password" >
+			    <label>Mật khẩu</label>
+			  </div>
+			  <div class="form-group frm-input">
+			    <input type="password" onfocus="this.placeholder='Nhập lại mật khẩu'" onblur="this.placeholder = ''" class="form-control" #retypePassword = "ngModel" (keyup)="onRetypePass($event)" [class.is-invalid] = "retypePassword.invalid && retypePassword.touched" id="retype_password" value="" required ngModel name="retypePassword">
+			    <label>Nhập lại mật khẩu</label>
+			  </div>
+			  <div class="text-center">
+			  	<input [disabled] = "registerForm.form.invalid" type="submit" id="btnRegister" class="btn btn-primary button button-register" value="Đăng ký">
+			  </div>
+			  <div class="text-center">
+			  	<p><i>Đã có tài khoản? </i> <b><a routerLink='/login'>Đăng nhập</a></b> </p>
+			  </div>
+			</form>
+		</section>
+	</section>
+	<!-- Error message -->
+	<section class="error-box">
+
+		<!-- Register success -->
+		<div class="error-handler" *ngIf="successSubmit">
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+			  <small>Đăng ký thành công!!! Bấm <a routerLink='/login'>vào đây</a> để trở về trang đăng nhập.</small>
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+		</div>
+
+
+
+		<!-- Register failed -->
+		<div class="error-handler" *ngIf="errorSubmit">
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  <small><b>Lỗi: </b>Đăng ký thất bại. {{ errorMessage }}</small>
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+		</div>
+
+		<!-- Username error -->
+		<div class="error-handler" *ngIf="userName.errors && userName.touched">
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  <small *ngIf="userName.errors.required">Không được bỏ trống tên đăng nhập</small>
+			  <small *ngIf="userName.errors.minlength">Tên đăng nhập ít nhất 5 ký tự</small>
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+		</div>
+
+		<!-- Lastname error -->
+		<div class="error-handler" *ngIf="lastName.errors && lastName.touched">
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  <small *ngIf="lastName.errors.required">Không được bỏ trống họ</small>
+			  <small *ngIf="lastName.errors.minlength">Nhập họ của bạn ít nhất 2 ký tự</small>
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+		</div>
+
+		<!-- Firstname error -->
+		<div class="error-handler" *ngIf="firstName.errors && firstName.touched">
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  <small *ngIf="firstName.errors.required">Không được bỏ trống tên</small>
+			  <small *ngIf="firstName.errors.minlength">Nhập tên của bạn ít nhất 2 ký tự</small>
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+		</div>
+
+		<!-- Password error -->
+		<div class="error-handler" *ngIf="password.errors && password.touched">
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  <small *ngIf="password.errors.required">Không được bỏ trống nhập mật khẩu</small>
+			  <small *ngIf="password.errors.pattern">Mật khẩu phải có ít nhất 8 ký tự. Trong đó phải có ít nhất một chữ cái và ít nhất một số.</small>	
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+		</div>
+
+		<!-- Retype password error -->
+		<div class="error-handler" *ngIf="retypePassword.errors && retypePassword.touched">
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  <small *ngIf="retypePassword.errors.required">Không được bỏ trống nhập lại mật khẩu</small>
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+		</div>
+		<div class="error-handler" *ngIf="!comparePass && retypePassword.valid">
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  <small>Nhập lại mật khẩu không chính xác</small>
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+		</div>
+
+	</section>
+</section>

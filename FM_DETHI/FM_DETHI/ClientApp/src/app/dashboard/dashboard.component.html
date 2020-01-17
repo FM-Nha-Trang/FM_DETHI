@@ -1,0 +1,106 @@
+<app-sidebar></app-sidebar>
+<div class="container-fluid content-page">
+	<div class="row align-self-center">
+		<div class="col-6">
+			<span class="title-page">TRANG CHỦ</span>
+		</div>
+		<div class="col-6">
+			<button class="btn btn-light float-right search-button"><i class="fas fa-search"></i></button>
+			<input type="text" class="form-control float-right search-input" placeholder="Nhập mã đề">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-6">
+			<div class="info-box float-left">
+				<div class="row h-100">
+					<div class="col-6 align-self-center">
+						<img src="assets/image/image_asset/user.png" alt="">
+					</div>
+					<div class="col-6 align-self-center">
+						<h4 class="user_info">THÔNG TIN NGƯỜI DÙNG</h4>
+						<h5 class="user_info">Tên: {{this.thisUser.Last_name + this.thisUser.First_name}}</h5>
+						<h5 class="user_info">Giới tính: {{this.thisUser.Gender}}</h5>
+						<h5 class="user_info">Tuổi: {{this.thisUser.Age}}</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-6">
+			<div class="info-box float-right">
+				<dl class="align-self-center">
+				  <dt class="text-center">
+				    Các thang điểm
+				  </dt>
+				  <dd class="percentage percentage-11"><span class="text">80-100 (11%)</span></dd>
+				  <dd class="percentage percentage-80"><span class="text">70-90 (80%)</span></dd>
+				  <dd class="percentage percentage-16"><span class="text">60-80 (16%)</span></dd>
+				  <dd class="percentage percentage-5"><span class="text">50-70 (5%)</span></dd>
+				  <dd class="percentage percentage-2"><span class="text">40-60 (2%)</span></dd>
+				  <dd class="percentage percentage-2"><span class="text">30-50 (2%)</span></dd>
+				</dl>				
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<!-- LIST OF TEST -->
+			<div class="table-info">
+				<table>
+					<thead>
+						<tr>
+							<th>USER</th>
+							<th>MÃ ĐỀ</th>
+							<th>TÊN BÀI TEST</th>
+							<th>NGÀY TRẢ LỜI</th>
+							<th>SỐ ĐIỂM</th>
+							<th>HÀNH ĐỘNG</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- TEST DATA -->
+						<tr *ngFor="let test of testList | keyvalue">
+							<td class="align-self-center">
+								<img src="assets/image/image_asset/user.png" alt="">
+							</td>
+							<td class="align-self-center text-left">
+								<b>{{ test.test_code }}</b>
+							</td>
+							<td class="align-self-center">
+								<b>{{"DE KIEM TRA TOAN TUY..."}}</b>
+							</td>
+							<td class="align-self-center">
+								<b>20/01/2020</b>
+							</td>
+							<td class="align-self-center">
+								<b>86</b>
+							</td>
+							<td class="align-self-center text-left">
+								<input  data-toggle="modal" data-target="#answer-page" type="button" class="btn btn-danger" value="Làm lại">
+							</td>
+						</tr>
+						<tr class="line-height"></tr>
+						<!-- END OF TEST DATA -->
+					</tbody>
+				</table>
+			</div>
+			<!-- END OF LIST OF TEST -->
+			<!-- ANSWER VIEW -->
+			<div class="modal fade" id="answer-page" tabindex="-1" role="dialog" aria-labelledby="Bài kiểm tra" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLongTitle">Bài kiểm tra</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        ...
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<!-- END OF ANSWER VIEW -->
+		</div>
+	</div>
+</div>
