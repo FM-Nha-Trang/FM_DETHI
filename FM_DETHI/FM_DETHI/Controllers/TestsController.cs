@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using DETHI.Models;
 using FM_DETHI.Models;
 using System.Globalization;
+using Newtonsoft.Json;
 
 namespace FM_DETHI.Controllers
 {
@@ -206,6 +207,20 @@ namespace FM_DETHI.Controllers
             return tests;
         }
 
+        // GET: api/Tests/List/User
+        [Route("List/User/{id}")]
+        [HttpGet("{id}")]
+        public ActionResult<History_Answer> GetHistory_AnswersByUserAnswer(int id)
+        {
+            if (!_context.History_Answer.Any(s => s.userid == id))
+            {
+                return Content("{\"StatusCode\" : \"200\", \"Message\" : \"Bạn chưa tạo đề nào!\"}");
+            }
+            var list = _context.Tests
+                                .Where(s => s.Id == id)
+                                .ToList();
+            return Content("{\"StatusCode\" : \"200\", \"Message\" : \"Thành công!\", \"Result\" : " + JsonConvert.SerializeObject(list) + "}");
+        }
         // DELETE: api/Tests/delete/5
         [Route("Check/{id}")]
         [HttpGet("{id}")]
