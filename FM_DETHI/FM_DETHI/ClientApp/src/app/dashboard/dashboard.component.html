@@ -69,16 +69,16 @@
 								<b>{{ test.title }}</b>
 							</td>
 							<td class="align-self-center">
-								<b>{{ (test.date_create == null)? 'Chưa tham gia' : test.date_create }}</b>
+								<b>{{ (test.isAnswer)? convertDate(test.dataAnswer.date_answer) : 'Chưa tham gia' }}</b>
 							</td>
 							<td class="align-self-center">
-								<b>{{ (test.dataAnswer == null )? 'Chưa tham gia' : test.dataAnswer }}</b>
+								<b>{{ (test.isAnswer)? test.dataAnswer.point : 'Chưa tham gia'}}</b>
 							</td>
 							<td class="align-self-center text-left">
-								<input  data-toggle="modal" data-target="#answer-page" type="button" class="btn {{ (test.isAnswer)? 'btn-info' : 'btn-danger' }}" value="{{ (test.isAnswer)? 'Làm lại' : 'Làm bài' }}">
+								<input *ngIf="!(test.isAnswer)" data-toggle="modal" data-target="#answer-page" type="button" class="btn  btn-danger" value="Làm bài" (click)="startTest(test.test_code,test.title)" >
+								<input *ngIf="test.isAnswer" data-toggle="modal" data-target="#answer-page" type="button" class="btn  btn-info" value="Làm lại" (click)="startTest(test.test_code,test.title)" >
 							</td>
 						</tr>
-						<tr class="line-height"></tr>
 						<!-- END OF TEST DATA -->
 					</tbody>
 				</table>
@@ -86,16 +86,34 @@
 			<!-- END OF LIST OF TEST -->
 			<!-- ANSWER VIEW -->
 			<div class="modal fade" id="answer-page" tabindex="-1" role="dialog" aria-labelledby="Bài kiểm tra" aria-hidden="true">
-			  <div class="modal-dialog" role="document">
+			  <div class="modal-dialog modal-lg" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <h5 class="modal-title" id="exampleModalLongTitle">Bài kiểm tra</h5>
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			        <button type="button" class="close" data-dismiss="modal" (click)="reloadData()" aria-label="Close">
 			          <span aria-hidden="true">&times;</span>
 			        </button>
 			      </div>
 			      <div class="modal-body">
-			        ...
+			        <h3 class="text-center">{{this.testTitle}}</h3>
+			        <h5 class="text-center">Mã đề: {{this.testCode}}</h5>
+			        <!-- <p class="text-center timmming">Thời gian đã sử dụng: </p> -->
+			        <div class="question-hold" *ngFor="let question of testQuestion; index as i" [hidden] = "this.countQuestion != i">
+			        	<b>Câu {{ i + 1 }}: {{question.title}}</b>
+			        	<p><input type="radio" value="a" (click) = "userAnswer(testQuestion.length,question.answer_true,$event)" name="question_{{ i + 1 }}">&nbsp; {{question.answer_A}}</p>
+			        	<p><input type="radio" value="b" (click) = "userAnswer(testQuestion.length,question.answer_true,$event)" name="question_{{ i + 1 }}">&nbsp; {{question.answer_B}}</p>
+			        	<p><input type="radio" value="c" (click) = "userAnswer(testQuestion.length,question.answer_true,$event)" name="question_{{ i + 1 }}">&nbsp; {{question.answer_C}}</p>
+			        	<p><input type="radio" value="d" (click) = "userAnswer(testQuestion.length,question.answer_true,$event)" name="question_{{ i + 1 }}">&nbsp; {{question.answer_D}}</p>
+			        </div>
+			        <div *ngIf="showResult" class="result-page text-center">
+			        	<h4>KẾT QUẢ:</h4>
+			        	<p>{{ this.correctAnswer + '/' + testQuestion.length }} Câu</p>
+						<h5>Tổng điểm</h5>
+						<p>{{ this.finalPoint }}</p>
+			        </div>
+			        <div class="text-center question-number">
+			        	<input *ngFor="let question of testQuestion; index as i" type="button" class="btn btn-primary" [ngClass]='{"button-qs-classic": this.countQuestion != i, "button-qs-active": this.countQuestion == i}' value="{{ i + 1 }}" disabled>
+			        </div>
 			      </div>
 			    </div>
 			  </div>

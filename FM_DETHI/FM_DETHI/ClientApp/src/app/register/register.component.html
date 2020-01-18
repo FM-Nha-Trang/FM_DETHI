@@ -7,13 +7,23 @@
 			    <input type="text" onfocus="this.placeholder='Nhập tên đăng nhập'" onblur="this.placeholder = ''" class="form-control" #userName = "ngModel" [class.is-invalid] = "userName.invalid && userName.touched" id="username" value="" required [(ngModel)]="usersModel.username" name="userName" minlength="5" [class.hide-invalid-text] = "userName.invalid">
 			    <label>Tên đăng nhập</label>
 			  </div>
-			  <div class="form-group frm-input">
-			    <input type="text" onfocus="this.placeholder='Nhập họ của bạn'" onblur="this.placeholder = ''" class="form-control"  #lastName = "ngModel" [class.is-invalid] = "lastName.invalid && lastName.touched" id="last_name" minlength="2" [class.hide-invalid-text] = "lastName.invalid" value="" required [(ngModel)]="usersModel.last_name" name="lastName">
-			    <label>Nhập họ</label>
+			  <div class="row">
+			  	<div class="col-6">
+				  <div class="form-group frm-input">
+				    <input type="text" onfocus="this.placeholder='Nhập họ của bạn'" onblur="this.placeholder = ''" class="form-control"  #lastName = "ngModel" [class.is-invalid] = "lastName.invalid && lastName.touched" id="last_name" minlength="2" [class.hide-invalid-text] = "lastName.invalid" value="" required [(ngModel)]="usersModel.last_name" name="lastName">
+				    <label>Nhập họ</label>
+				  </div>
+			  	</div>
+			  	<div class="col-6">
+				  <div class="form-group frm-input">
+				    <input type="text" onfocus="this.placeholder='Nhập tên của bạn'" onblur="this.placeholder = ''" class="form-control" #firstName = "ngModel" [class.is-invalid] = "firstName.invalid && firstName.touched" minlength="2" [class.hide-invalid-text] = "firstName.invalid" id="first_name" value="" required [(ngModel)] = "usersModel.first_name" name="firstName">
+				    <label>Nhập tên</label>
+				  </div>
+			  	</div>
 			  </div>
 			  <div class="form-group frm-input">
-			    <input type="text" onfocus="this.placeholder='Nhập tên của bạn'" onblur="this.placeholder = ''" class="form-control" #firstName = "ngModel" [class.is-invalid] = "firstName.invalid && firstName.touched" minlength="2" [class.hide-invalid-text] = "firstName.invalid" id="first_name" value="" required [(ngModel)] = "usersModel.first_name" name="firstName">
-			    <label>Nhập tên</label>
+			    <input type="text" onfocus="this.placeholder='Nhập tuổi của bạn'" onblur="this.placeholder = ''" class="form-control" #userAge = "ngModel" [class.is-invalid] = "userAge.invalid && userAge.touched" [class.hide-invalid-text] = "userAge.invalid" id="userAge" value="" required [(ngModel)] = "usersModel.age" name="userAge">
+			    <label>Nhập tuổi</label>
 			  </div>
 			  <div class="form-group text-center">
 				  <span><b>Giới tính</b>: &nbsp;</span>

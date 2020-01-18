@@ -23,31 +23,31 @@
 								<th>USER</th>
 								<th>MÃ ĐỀ</th>
 								<th>TÊN BÀI TEST</th>
-								<th>NGÀY TRẢ LỜI</th>
+								<th>NGÀY TẠO</th>
 								<th>SỐ CÂU HỎI</th>
 								<th>HÀNH ĐỘNG</th>
 							</tr>
 						</thead>
 						<tbody>
 							<!-- TEST DATA -->
-							<tr>
+							<tr *ngFor="let test of testListUser; index as i" [hidden] = "i > 2">
 								<td class="align-self-center">
 									<img src="assets/image/image_asset/user.png" alt="">
 								</td>
 								<td class="align-self-center text-left">
-									<b>TU0116012020	</b>
+									<b>{{ test.test_code }}</b>
 								</td>
 								<td class="align-self-center">
-									<b>{{"DE KIEM TRA TOAN TUY..."}}</b>
+									<b>{{ test.title }}</b>
 								</td>
 								<td class="align-self-center">
-									<b>20/01/2020</b>
+									<b>{{ convertDate(test.date_create) }}</b>
 								</td>
 								<td class="align-self-center">
-									<b>10</b>
+									<b>null</b>
 								</td>
 								<td class="align-self-center text-left">
-									<input  data-toggle="modal" data-target="#answer-page" type="button" class="btn btn-danger" value="Xoá bài">
+									<!-- <input  data-toggle="modal" data-target="#answer-page" type="button" class="btn btn-danger" value=""> -->
 								</td>
 							</tr>
 							<tr class="line-height"></tr>
@@ -82,24 +82,24 @@
 						</thead>
 						<tbody>
 							<!-- TEST DATA -->
-							<tr>
+							<tr *ngFor="let test of testListDone">
 								<td class="align-self-center">
 									<img src="assets/image/image_asset/user.png" alt="">
 								</td>
 								<td class="align-self-center text-left">
-									<b>TU0116012020	</b>
+									<b>{{ test.test_code }}</b>
 								</td>
 								<td class="align-self-center">
-									<b>{{"DE KIEM TRA TOAN TUY..."}}</b>
+									<b>{{ test.title }}</b>
 								</td>
 								<td class="align-self-center">
-									<b>20/01/2020</b>
+									<b>{{ convertDate(test.date_answer) }}</b>
 								</td>
 								<td class="align-self-center">
-									<b>86</b>
+									<b>{{ test.point }}</b>
 								</td>
 								<td class="align-self-center text-left">
-									<input  data-toggle="modal" data-target="#answer-page" type="button" class="btn btn-danger" value="Xoá bài">
+									<input  data-toggle="modal" data-target="#answer-page" type="button" class="btn btn-danger" value="Làm lại">
 								</td>
 							</tr>
 							<tr class="line-height"></tr>

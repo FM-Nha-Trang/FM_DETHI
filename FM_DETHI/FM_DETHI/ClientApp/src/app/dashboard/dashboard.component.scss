@@ -36,6 +36,8 @@
   //TABLE
   table {
     width: 100%;
+    border-collapse:separate; 
+    border-spacing:0em 2em;
     thead {
       color: #888383;
       th {
@@ -50,9 +52,11 @@
         .title {
           width: 28%;
         }
+        &:hover{
+          background: #B4B4B4;
+        }
         td {
           padding: 1em;
-
           padding-left: 1.5em;
           img {
             margin-left: 0.5em;
@@ -60,8 +64,45 @@
           }
         }
       }
-      .line-height {
-        height: 1rem;
+    }
+  }
+  //ANSWER
+  .modal-body{
+    h3 {
+      padding-bottom: 0.5em;
+    }
+    h5, .timmming {
+      padding-bottom: 0.5em;
+      color: #888383;
+    }
+
+    .button-qs-classic{
+      border-radius: 100%;
+      width: 3.5em;
+      height: 3.5em;
+      margin: 0em 1em;
+      background: #888383;
+    }
+
+    .button-qs-active{
+      border-radius: 100%;
+      width: 3.5em;
+      height: 3.5em;
+      margin: 0em 1em;
+      background: green;
+    }
+
+    .question-hold {
+      border: 1px solid #888383;
+      padding: 1.2em 1em;
+      margin-bottom: 1em;
+    }
+
+    .result-page {
+      p {
+        margin-bottom: 0.5em;
+        front-weight: bold;
+        font-size: 3em;
       }
     }
   }

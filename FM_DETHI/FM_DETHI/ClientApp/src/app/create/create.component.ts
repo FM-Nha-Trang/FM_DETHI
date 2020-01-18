@@ -18,7 +18,7 @@ export class CreateComponent implements OnInit {
    private currentDay: string;
    private datesendDB: string = (this.curentDate.getFullYear() + '-0' + (this.curentDate.getMonth() + 1) + '-' + this.curentDate.getDate() + 'T' + this.curentDate.getHours() + ":" + this.curentDate.getMinutes() + ":" + this.curentDate.getSeconds()).toString();
    //user_id, date_create, title 
-   public test = new Test(JSON.parse(sessionStorage.getItem("user")).Id,this.datesendDB,'');
+   public test = new Test(parseInt(JSON.parse(sessionStorage.getItem("user")).Id),'');
    //test_code, title, answer_a, answer_b, answer_c, answer_d, answer_true
    public question_1 = new Question('','','','','','','');
    public question_2 = new Question('','','','','','','');
@@ -49,10 +49,12 @@ export class CreateComponent implements OnInit {
     this._testService.postTest(this.test).subscribe(
                                                     data => {
                                                       this.question_1.test_code = data.test_code;
+                                                      console.log(this.question_1);
                                                       this._testService.postQuestion(this.question_1).subscribe(
                                                                                                       data => console.log("ans success"),
                                                                                                       error => console.log(JSON.stringify(error))
                                                                                                      );
+                                                      
                                                     },
                                                     error => console.log(JSON.stringify(error))
                                                    );
