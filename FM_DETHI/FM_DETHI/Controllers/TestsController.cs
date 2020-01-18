@@ -29,7 +29,6 @@ namespace FM_DETHI.Controllers
         public async Task<ActionResult<IEnumerable<Tests>>> GetTests()
         {
             List<Tests> list =  await _context.Tests.ToListAsync();
-
             return list;
         }
 
@@ -164,7 +163,11 @@ namespace FM_DETHI.Controllers
             do
             {
                 tests.test_code = this.CreateTestCode((int)tests.user_create);
-            } while (TestsExists(tests.test_code));            
+            } while (TestsExists(tests.test_code));
+
+            DateTime dt =  DateTime.Now;
+            DateTime datenow = DateTime.Parse(dt.ToString(), CultureInfo.CreateSpecificCulture("en-US"), DateTimeStyles.None);
+            tests.date_create = datenow;
 
             _context.Tests.Add(tests);
             try
