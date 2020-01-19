@@ -10,6 +10,10 @@ import { UsersService } from '../users.service';
 })
 export class LoginComponent implements OnInit {
 
+  public errorSubmit: boolean = false ;
+
+  public errorMessage: string;
+
   constructor(private _usersService: UsersService, private router: Router) { }
 
 
@@ -28,10 +32,15 @@ export class LoginComponent implements OnInit {
   		.subscribe(
   			data => {
   				sessionStorage.setItem("loggin", "true");
-  				sessionStorage.setItem("user", JSON.stringify(data.Data[0]));
-  				this.router.navigate(['/dashboard']);
+          if(data.Data[0]){
+            sessionStorage.setItem("user", JSON.stringify(data.Data[0]));
+            console.log('log success');
+            this.router.navigate(['dashboard']);
+          } else {
+            this.router.navigate(['login']);
+          }
   			}, 
-  			error => console.log(JSON.stringify(error)) 
+  			error => {this.errorSubmit = true; this.errorMessage= error.error.Message}
   		);
   }
 

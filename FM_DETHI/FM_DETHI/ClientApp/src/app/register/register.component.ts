@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   ** username,last_name,first_name,age,gender,password
   ** password_test: Helloworld1
    */
-  usersModel = new Users(0,'','','', 0, 'Nam', '');
+  usersModel = new Users(0,'','','',null , 'Nam', '');
 
   public errorSubmit: boolean = false ;
 

@@ -33,9 +33,9 @@ export class HistoryComponent implements OnInit {
   	}
     this.thisUser = JSON.parse(sessionStorage.getItem("user"));
     this._testService.getTestCreate(JSON.parse(sessionStorage.getItem("user")).Id)
-                     .subscribe((data:any[]) => this.testListUser = data.Result, error => console.log("failed"));
+                     .subscribe((data:any) => this.testListUser = data.Result, error => console.log("failed"));
     this._testService.getTestDone(JSON.parse(sessionStorage.getItem("user")).Id)
-                     .subscribe((data:any[]) => {this.testListDone = data.Result; console.log(this.testListDone)}, error => console.log("failed"));
+                     .subscribe((data:any) => {this.testListDone = data.Result; console.log(this.testListDone)}, error => console.log("failed"));
 
   }
 
@@ -52,12 +52,6 @@ export class HistoryComponent implements OnInit {
     this.countQuestion = 0;
     this.correctAnswer = 0;
     this.showResult = false;
-  }
-
-  //Click re do test button 
-  reTest(test_code: string, test_title: string){
-    this.testCode = test_code;
-    this.testTitle = test_title;
   }
 
   //Compare answer

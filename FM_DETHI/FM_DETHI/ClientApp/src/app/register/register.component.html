@@ -22,7 +22,7 @@
 			  	</div>
 			  </div>
 			  <div class="form-group frm-input">
-			    <input type="text" onfocus="this.placeholder='Nhập tuổi của bạn'" onblur="this.placeholder = ''" class="form-control" #userAge = "ngModel" [class.is-invalid] = "userAge.invalid && userAge.touched" [class.hide-invalid-text] = "userAge.invalid" id="userAge" value="" required [(ngModel)] = "usersModel.age" name="userAge">
+			    <input type="number" onfocus="this.placeholder='Nhập tuổi của bạn'" onblur="this.placeholder = ''" class="form-control" #userAge = "ngModel" [class.is-invalid] = "userAge.invalid && userAge.touched" [class.hide-invalid-text] = "userAge.invalid" id="userAge" required [(ngModel)] = "usersModel.age" name="userAge">
 			    <label>Nhập tuổi</label>
 			  </div>
 			  <div class="form-group text-center">
@@ -67,8 +67,6 @@
 			  </button>
 			</div>
 		</div>
-
-
 
 		<!-- Register failed -->
 		<div class="error-handler" *ngIf="errorSubmit">

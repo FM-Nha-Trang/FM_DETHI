@@ -48,24 +48,34 @@ export class CreateComponent implements OnInit {
   onSubmit() {
     this._testService.postTest(this.test).subscribe(
                                                     data => {
-                                                      this.question_1.test_code = data.test_code;
+                                                      this.question_1.test_code = this.question_2.test_code= this.question_3.test_code = this.question_4.test_code = this.question_5.test_code= data.test_code;
                                                       console.log(this.question_1);
                                                       this._testService.postQuestion(this.question_1).subscribe(
                                                                                                       data => console.log("ans success"),
                                                                                                       error => console.log(JSON.stringify(error))
                                                                                                      );
-                                                      
+                                                      this._testService.postQuestion(this.question_2).subscribe(
+                                                                                                      data => console.log("ans success"),
+                                                                                                      error => console.log(JSON.stringify(error))
+                                                                                                     );
+                                                      this._testService.postQuestion(this.question_3).subscribe(
+                                                                                                      data => console.log("ans success"),
+                                                                                                      error => console.log(JSON.stringify(error))
+                                                                                                     );
+                                                      this._testService.postQuestion(this.question_4).subscribe(
+                                                                                                      data => console.log("ans success"),
+                                                                                                      error => console.log(JSON.stringify(error))
+                                                                                                     );
+                                                      this._testService.postQuestion(this.question_5).subscribe(
+                                                                                                      data => console.log("ans success"),
+                                                                                                      error => console.log(JSON.stringify(error))
+                                                                                                     );
                                                     },
                                                     error => console.log(JSON.stringify(error))
-                                                   );
-    // this._testService.postQuestion(this.question_1).subscribe(
-    //                                                 data => console.log("ans success"),
-    //                                                 error => console.log(JSON.stringify(error))
-    //                                                );
-  }
+                                                   );  }
 
-  addMoreQuestion(){
+  // addMoreQuestion(){
 
-  }
+  // }
 
 }
