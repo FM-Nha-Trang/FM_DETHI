@@ -83,7 +83,7 @@ export class TestService {
   //GET list of test by test code
   getListByTestCode(testCode: string){
   	return this.http
-  			   .get<any>(this.base_url + "api/History_Answer/List/Test/" + testCode);
+  			   .get<any>(this.base_url + "api/Tests/Get/" + testCode);
   }
 
   //Error handler while using method

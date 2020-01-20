@@ -42,7 +42,8 @@ export class DashboardComponent implements OnInit {
   searchTestCode(searchString: string){
     this._testService.getListByTestCode(searchString).subscribe(
                                                                 data => {
-                                                                  this.searchResult = data.Result;
+                                                                  console.log(data);
+                                                                  this.searchResult = data;
                                                                   this.search = true;
                                                                 },
                                                                 error => {
