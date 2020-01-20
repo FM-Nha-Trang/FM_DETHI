@@ -21,8 +21,25 @@ namespace FM_DETHI.Controllers
     [ApiController]
     public class History_AnswerController : ControllerBase
     {
-        private readonly UserContext _context;
-
+        private  UserContext _context;
+        struct XL
+        {
+            public int Yeu { get; set; }
+            public int TBinh { get; set; }
+            public int Kha { get; set; }
+            public int Gioi { get; set; }
+            public int XSac { get; set; }
+            public int Tong { get; set; }
+            public XL(int yeu, int tbinh, int kha, int gioi, int xsac, int tong) : this()
+            {
+                this.Yeu = yeu;
+                this.TBinh = tbinh;
+                this.Kha = kha;
+                this.Gioi = gioi;
+                this.XSac = xsac;
+                this.Tong = tong;
+            }
+        };
         public History_AnswerController(UserContext context)
         {
             _context = context;
@@ -61,8 +78,8 @@ namespace FM_DETHI.Controllers
                 return Ok("{\"StatusCode\" : \"200\", \"Message\" : \"Bạn chưa đáp đề nào!\"}");
             }
             var list = _context.History_Answer
-                                .Join(_context.Tests, h => h.test_code, t => t.test_code, (h, t) => new { h.id, h.test_code, h.userid, h.date_answer, h.point, t.title })
-                                .Where(s => s.userid == id)
+                                .Join(_context.Tests, h => h.test_code, t=> t.test_code, (h, t)=> new { h.id, h.test_code, h.userid, h.date_answer, h.point, t.title })
+                                .Where(h => h.userid == id)
                                 .ToList();
             return Ok("{\"StatusCode\" : \"200\", \"Message\" : \"Thành công!\", \"Result\" : " + JsonConvert.SerializeObject(list) + "}");
         }
@@ -158,6 +175,44 @@ namespace FM_DETHI.Controllers
             return CreatedAtAction("GetHistory_Answer", new { id = history_Answer.id });
         }
 
+        //GET : api/History_Answer/Point/5
+        [Route("Point/{id}")]
+        [HttpGet("{id}")]
+        public ActionResult<History_Answer> GetPointByUser(int id)
+        {
+            string sql = "SELECT point as 'Point', count(point) as 'count' "
+                            +"FROM History_Answer "
+                            +"where userid = " +id+ " "
+                            +"group by(point);";
+            var resultSQL = _context.History_Answer
+                                .Where(s => s.userid == id)
+                                .Select(s => new
+                                {
+                                    Point = s.point,
+                                });
+
+            int a = 0, b = 0, c = 0, d = 0, e = 0;
+            foreach (var p in resultSQL)
+            {
+                if (p.Point < 50)
+                    a = a + 1;
+                if (50 <= p.Point && p.Point < 65)
+                    b = b + 1;
+                if (65 <= p.Point && p.Point < 80)
+                    c = c + 1;
+                if (80 <= p.Point && p.Point < 90)
+                    d = d + 1;
+                if (90 <= p.Point && p.Point <= 100)
+                    e = e + 1;
+            }
+
+            XL xl = new XL(a, b, c, d, e, (a+b+c+d+e));
+
+            //var result = await _context.History_Answer.FromSqlRaw(sql).ToListAsync();
+            return Ok(xl);
+        }
+
+
         // DELETE: api/History_Answer/5
         [Route("Delete/{id}")]
         [HttpDelete("{id}")]
@@ -178,6 +233,21 @@ namespace FM_DETHI.Controllers
         private bool History_AnswerExists(int id)
         {
             return _context.History_Answer.Any(e => e.id == id);
+        }
+
+        private int checkPoint(int p)
+        {
+            if (p < 50)
+                return 1;
+            if (50 <= p && p < 65)
+                return 2;
+            if (65 <= p && p < 80)
+                return 3;
+            if (80 <= p && p < 90)
+                return 4;
+            if (90 <= p && p <= 100)
+                return 5;
+            return 0;
         }
     }
 }
