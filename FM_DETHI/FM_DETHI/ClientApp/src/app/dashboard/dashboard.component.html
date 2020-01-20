@@ -5,8 +5,8 @@
 			<span class="title-page">TRANG CHỦ</span>
 		</div>
 		<div class="col-6">
-			<button class="btn btn-light float-right search-button"><i class="fas fa-search"></i></button>
-			<input type="text" class="form-control float-right search-input" placeholder="Nhập mã đề">
+			<button (click)="searchTestCode(inputTestCode.value)" class="btn btn-light float-right search-button"><i class="fas fa-search"></i></button>
+			<input type="text" #inputTestCode class="form-control float-right search-input" placeholder="Nhập mã đề">
 		</div>
 	</div>
 	<div class="row">
@@ -56,9 +56,36 @@
 							<th>HÀNH ĐỘNG</th>
 						</tr>
 					</thead>
-					<tbody>
+					<!-- Default page -->
+					<tbody  *ngIf="!(this.search)">
 						<!-- TEST DATA -->
 						<tr *ngFor="let test of testList">
+							<td class="align-self-center">
+								<img src="assets/image/image_asset/user.png" alt="">
+							</td>
+							<td class="align-self-center text-left">
+								<b>{{ test.test_code }}</b>
+							</td>
+							<td class="title align-self-center">
+								<b>{{ test.title }}</b>
+							</td>
+							<td class="align-self-center">
+								<b>{{ (test.isAnswer)? convertDate(test.dataAnswer.date_answer) : 'Chưa tham gia' }}</b>
+							</td>
+							<td class="align-self-center">
+								<b>{{ (test.isAnswer)? test.dataAnswer.point : 'Chưa tham gia'}}</b>
+							</td>
+							<td class="align-self-center text-left">
+								<input *ngIf="!(test.isAnswer)" data-toggle="modal" data-target="#answer-page" type="button" class="btn  btn-danger" value="Làm bài" (click)="startTest(test.test_code,test.title)" >
+								<input *ngIf="test.isAnswer" data-toggle="modal" data-target="#answer-page" type="button" class="btn  btn-info" value="Làm lại" (click)="startTest(test.test_code,test.title)" >
+							</td>
+						</tr>
+						<!-- END OF TEST DATA -->
+					</tbody>
+					<!-- Search data -->
+					<tbody  *ngIf="this.search">
+						<!-- TEST DATA -->
+						<tr *ngFor="let test of searchResult">
 							<td class="align-self-center">
 								<img src="assets/image/image_asset/user.png" alt="">
 							</td>

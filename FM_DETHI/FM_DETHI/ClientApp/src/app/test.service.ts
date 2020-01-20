@@ -26,11 +26,13 @@ export class TestService {
   			   .get<ITest[]>(this.base_url + "api/Tests/List/" + id);
   }
 
+  //GET list of test create by user
   getTestCreate(id: number): Observable<ITest[]> {
   	return this.http
   			   .get<ITest[]>(this.base_url + "api/Tests/List/User/" + id);
   }
 
+  //GET list user has done
   getTestDone(id: number): Observable<ITest[]> {
   	return this.http
   			   .get<ITest[]>(this.base_url + "api/History_answer/List/User/" + id);
@@ -72,10 +74,16 @@ export class TestService {
 			   .post<any>(this.base_url + "api/History_Answer/Add",saveAnswer);
   }
 
-  //PUT Answer record
+  //POST Answer record
   updateAnswerRecord(testCode: string,saveAnswer: HistoryAnswer){
   	return this.http
 			   .post<any>(this.base_url + "api/History_Answer/Update/" + testCode,saveAnswer);
+  }
+
+  //GET list of test by test code
+  getListByTestCode(testCode: string){
+  	return this.http
+  			   .get<any>(this.base_url + "api/History_Answer/List/Test/" + testCode);
   }
 
   //Error handler while using method
