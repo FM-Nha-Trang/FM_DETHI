@@ -217,7 +217,7 @@ namespace FM_DETHI.Controllers
                 return Content("{\"StatusCode\" : \"200\", \"Message\" : \"Bạn chưa tạo đề nào!\"}");
             }
             var list = _context.Tests
-                                .Where(s => s.Id == id)
+                                .Where(s => s.user_create == id)
                                 .ToList();
             return Content("{\"StatusCode\" : \"200\", \"Message\" : \"Thành công!\", \"Result\" : " + JsonConvert.SerializeObject(list) + "}");
         }

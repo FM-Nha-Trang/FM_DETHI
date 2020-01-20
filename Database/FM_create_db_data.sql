@@ -1,6 +1,7 @@
 create database testdsc;
 use testdsc;
 dbcc checkident(tests,reseed,1);
+-- username:admin , password: admin12345
 insert into users
 VALUES
    ('admin', 'Ma', 'Hung', 22, N'Nữ', '7488e331b8b64e5794da3fa4eb10ad5d');

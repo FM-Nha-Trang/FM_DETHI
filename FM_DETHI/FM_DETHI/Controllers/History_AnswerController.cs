@@ -61,6 +61,7 @@ namespace FM_DETHI.Controllers
                 return Ok("{\"StatusCode\" : \"200\", \"Message\" : \"Bạn chưa đáp đề nào!\"}");
             }
             var list = _context.History_Answer
+                                .Join(_context.Tests, h => h.test_code, t => t.test_code, (h, t) => new { h.id, h.test_code, h.userid, h.date_answer, h.point, t.title })
                                 .Where(s => s.userid == id)
                                 .ToList();
             return Ok("{\"StatusCode\" : \"200\", \"Message\" : \"Thành công!\", \"Result\" : " + JsonConvert.SerializeObject(list) + "}");
