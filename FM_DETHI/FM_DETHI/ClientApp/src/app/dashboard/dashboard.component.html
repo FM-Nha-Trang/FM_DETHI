@@ -31,11 +31,11 @@
 				  <dt class="text-center">
 				    Tổng kết các thang điểm
 				  </dt>
-				  <dd class="percentage percentage-80"><span class="text">Xuất sắc (80%)</span></dd>
-				  <dd class="percentage percentage-16"><span class="text">Giỏi (16%)</span></dd>
-				  <dd class="percentage percentage-5"><span class="text">Khá (5%)</span></dd>
-				  <dd class="percentage percentage-2"><span class="text">Trung bình  (20%)</span></dd>
-				  <dd class="percentage percentage-2"><span class="text">Yếu (2%)</span></dd>
+				  <dd class="percentage percentage-{{(totalPoint.xSac/totalPoint.tong)*100}}"><span class="text">Xuất sắc ({{(totalPoint.xSac/totalPoint.tong)*100}}%)</span></dd>
+				  <dd class="percentage percentage-{{(totalPoint.gioi/totalPoint.tong)*100}}"><span class="text">Giỏi ({{(totalPoint.gioi/totalPoint.tong)*100}}%)</span></dd>
+				  <dd class="percentage percentage-{{(totalPoint.kha/totalPoint.tong)*100}}"><span class="text">Khá ({{(totalPoint.kha/totalPoint.tong)*100}}%)</span></dd>
+				  <dd class="percentage percentage-{{(totalPoint.tBinh/totalPoint.tong)*100}}"><span class="text">Trung bình  ({{(totalPoint.tBinh/totalPoint.tong)*100}}%)</span></dd>
+				  <dd class="percentage percentage-{{(totalPoint.yeu/totalPoint.tong)*100}}"><span class="text">Yếu ({{(totalPoint.yeu/totalPoint.tong)*100}}%)</span></dd>
 				</dl>				
 			</div>
 		</div>

@@ -86,6 +86,12 @@ export class TestService {
   			   .get<any>(this.base_url + "api/Tests/Get/" + testCode);
   }
 
+  //GET total of user point
+  getTotalPoint(userID: string){
+  	return this.http
+  			   .get<any>(this.base_url + "api/History_Answer/Point/" + userID);
+  }
+
   //Error handler while using method
   errorHandler(error: HttpErrorResponse){
   	return Observable.throw(error.message || "Server error!!!");

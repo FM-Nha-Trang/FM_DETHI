@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
   private finalPoint: number;
   private search: boolean = false;
   private searchResult: any;
+  private totalPoint: object;
 
   constructor(private router: Router, private _testService: TestService) { }
 
@@ -36,6 +37,8 @@ export class DashboardComponent implements OnInit {
     this.thisUser = JSON.parse(sessionStorage.getItem("user"));
     this._testService.getTestList(JSON.parse(sessionStorage.getItem("user")).Id)
                      .subscribe((data:any[]) => this.testList = data, error => console.log("failed"));
+    this._testService.getTotalPoint(JSON.parse(sessionStorage.getItem("user")).Id)
+                     .subscribe((data) => {this.totalPoint = data;}, error => console.log("failed"));
   }
 
   //Search test by test code
